@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookies Go Away</title>
+</head>
+<body>
+  <h1>Cookie Are Here Maybe</h1>
+  <button onclick="setSessionCookie()">Set Session Cookie</button>
+  <button onclick="setPersistentCookie()">Set Persistent Cookie</button>
+  <button onclick="checkCookies()">Check Cookies</button>
+  <button onclick="clearCookies()">Clear Cookies</button>
+  <script>
+    function setSessionCookie() {
+      document.cookie = "session_cookie=session_value; path=/";
+      alert("Session cookie set: " + document.cookie);
+    }
+
+    function setPersistentCookie() {
+      const expires = new Date(Date.now() + 30 * 1000).toUTCString(); // <---- 30 seconds
+      document.cookie = `persistent_cookie=persistent_value; path=/; expires=${expires}`;
+      alert("Persistent cookie set: " + document.cookie);
+    }
+
+    function checkCookies() {
+      alert("Current cookies: " + document.cookie);
+    }
+
+    function clearCookies() {
+      document.cookie = "session_cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie = "persistent_cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      alert("Cookies cleared: " + document.cookie);
+    }
+  </script>
+</body>
+</html>
